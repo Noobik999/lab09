@@ -1,0 +1,900 @@
+﻿# Все команды были успешно выполнены
+
+## Имя, скрипт и загрузка файлов с ГитХаба
+Выполнены
+
+## Добавление Хантер в CMake
+Терминал сбойнул и его пришлось закрыть
+
+## Удаление Гтеста и реактирование CMake
+Тоже код был утерян:(
+
+## Сборка CMake
+Ps От hunter было решено отказаться в пользу Gtest
+```
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ gsed -i '/HunterGate/d' CMakeLists.txt
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ gsed -i '/hunter_add_package/d' CMakeLists.txt
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ gsed -i '/find_package(GTest/d' CMakeLists.txt
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ gsed -i '/include.*HunterGate/d' CMakeLists.txt
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ nano CMakeLists.txt
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ rm -rf cmake/Hunter
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ rm -rf _builds _buils
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ cmake -H. -B_builds -DBUILD_TESTS=ON
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/noobik999/Noobik999/workspace/projects/lab07/_builds
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ cmake --build _builds
+[ 25%] Building CXX object CMakeFiles/print.dir/sources/print.cpp.o
+[ 50%] Linking CXX static library libprint.a
+[ 50%] Built target print
+[ 75%] Building CXX object CMakeFiles/check.dir/tests/test1.cpp.o
+/home/noobik999/Noobik999/workspace/projects/lab07/tests/test1.cpp:4:10: fatal error: gtest/gtest.h: Нет такого файла или каталога
+    4 | #include <gtest/gtest.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [CMakeFiles/check.dir/build.make:79: CMakeFiles/check.dir/tests/test1.cpp.o] Ошибка 1
+gmake[1]: *** [CMakeFiles/Makefile2:122: CMakeFiles/check.dir/all] Ошибка 2
+gmake: *** [Makefile:166: all] Ошибка 2
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ sudo apt install libgtest-dev
+[sudo] пароль для noobik999: 
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  linux-image-6.12.43+deb13-arm64  linux-image-6.12.57+deb13-arm64
+Для их удаления используйте «sudo apt autoremove».
+
+Установка:
+  libgtest-dev
+
+Установка зависимостей:
+  googletest
+
+Сводка:
+  Обновление: 0, Установка: 2, Удаление: 0, Пропуск обновления: 15
+  Объём загрузки: 763 kB
+  Требуемое пространство: 5 221 kB / 10,3 GB доступно
+
+Продолжить? [Д/н] Y
+Пол:1 http://deb.debian.org/debian trixie/main arm64 googletest all 1.16.0-1 [517 kB]
+Пол:2 http://deb.debian.org/debian trixie/main arm64 libgtest-dev arm64 1.16.0-1 [246 kB]
+Получено 763 kB за 2с (464 kB/s)           
+Выбор ранее не выбранного пакета googletest.
+(Чтение базы данных … на данный момент установлено 161605 файлов и каталогов.)
+Подготовка к распаковке …/googletest_1.16.0-1_all.deb …
+Распаковывается googletest (1.16.0-1) …
+Выбор ранее не выбранного пакета libgtest-dev:arm64.
+Подготовка к распаковке …/libgtest-dev_1.16.0-1_arm64.deb …
+Распаковывается libgtest-dev:arm64 (1.16.0-1) …
+Настраивается пакет googletest (1.16.0-1) …
+Настраивается пакет libgtest-dev:arm64 (1.16.0-1) …
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ sudo cmake /usr/src/googletest -B /usr/src/googletest/build
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /usr/src/googletest/build
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ sudo cmake --build /usr/src/googletest/build --target install
+[ 12%] Building CXX object googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[ 25%] Linking CXX static library ../lib/libgtest.a
+[ 25%] Built target gtest
+[ 37%] Building CXX object googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
+[ 50%] Linking CXX static library ../lib/libgmock.a
+[ 50%] Built target gmock
+[ 62%] Building CXX object googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
+[ 75%] Linking CXX static library ../lib/libgmock_main.a
+[ 75%] Built target gmock_main
+[ 87%] Building CXX object googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[100%] Linking CXX static library ../lib/libgtest_main.a
+[100%] Built target gtest_main
+Install the project...
+-- Install configuration: ""
+-- Up-to-date: /usr/local/include
+-- Installing: /usr/local/include/gmock
+-- Installing: /usr/local/include/gmock/gmock-function-mocker.h
+-- Installing: /usr/local/include/gmock/gmock-more-matchers.h
+-- Installing: /usr/local/include/gmock/gmock-actions.h
+-- Installing: /usr/local/include/gmock/gmock-nice-strict.h
+-- Installing: /usr/local/include/gmock/gmock.h
+-- Installing: /usr/local/include/gmock/gmock-matchers.h
+-- Installing: /usr/local/include/gmock/gmock-spec-builders.h
+-- Installing: /usr/local/include/gmock/internal
+-- Installing: /usr/local/include/gmock/internal/custom
+-- Installing: /usr/local/include/gmock/internal/custom/README.md
+-- Installing: /usr/local/include/gmock/internal/custom/gmock-generated-actions.h
+-- Installing: /usr/local/include/gmock/internal/custom/gmock-matchers.h
+-- Installing: /usr/local/include/gmock/internal/custom/gmock-port.h
+-- Installing: /usr/local/include/gmock/internal/gmock-internal-utils.h
+-- Installing: /usr/local/include/gmock/internal/gmock-pp.h
+-- Installing: /usr/local/include/gmock/internal/gmock-port.h
+-- Installing: /usr/local/include/gmock/gmock-cardinalities.h
+-- Installing: /usr/local/include/gmock/gmock-more-actions.h
+-- Installing: /usr/local/lib/libgmock.a
+-- Installing: /usr/local/lib/libgmock_main.a
+-- Installing: /usr/local/lib/pkgconfig/gmock.pc
+-- Installing: /usr/local/lib/pkgconfig/gmock_main.pc
+-- Installing: /usr/local/lib/cmake/GTest/GMockTargets.cmake
+-- Installing: /usr/local/lib/cmake/GTest/GMockTargets-noconfig.cmake
+-- Installing: /usr/local/lib/cmake/GTest/GTestTargets.cmake
+-- Installing: /usr/local/lib/cmake/GTest/GTestTargets-noconfig.cmake
+-- Installing: /usr/local/lib/cmake/GTest/GTestConfigVersion.cmake
+-- Installing: /usr/local/lib/cmake/GTest/GTestConfig.cmake
+-- Up-to-date: /usr/local/include
+-- Installing: /usr/local/include/gtest
+-- Installing: /usr/local/include/gtest/gtest-message.h
+-- Installing: /usr/local/include/gtest/gtest-spi.h
+-- Installing: /usr/local/include/gtest/gtest-param-test.h
+-- Installing: /usr/local/include/gtest/gtest-test-part.h
+-- Installing: /usr/local/include/gtest/gtest-printers.h
+-- Installing: /usr/local/include/gtest/gtest-matchers.h
+-- Installing: /usr/local/include/gtest/gtest_pred_impl.h
+-- Installing: /usr/local/include/gtest/gtest-typed-test.h
+-- Installing: /usr/local/include/gtest/gtest_prod.h
+-- Installing: /usr/local/include/gtest/gtest-assertion-result.h
+-- Installing: /usr/local/include/gtest/internal
+-- Installing: /usr/local/include/gtest/internal/gtest-filepath.h
+-- Installing: /usr/local/include/gtest/internal/custom
+-- Installing: /usr/local/include/gtest/internal/custom/README.md
+-- Installing: /usr/local/include/gtest/internal/custom/gtest-printers.h
+-- Installing: /usr/local/include/gtest/internal/custom/gtest-port.h
+-- Installing: /usr/local/include/gtest/internal/custom/gtest.h
+-- Installing: /usr/local/include/gtest/internal/gtest-port.h
+-- Installing: /usr/local/include/gtest/internal/gtest-death-test-internal.h
+-- Installing: /usr/local/include/gtest/internal/gtest-string.h
+-- Installing: /usr/local/include/gtest/internal/gtest-type-util.h
+-- Installing: /usr/local/include/gtest/internal/gtest-param-util.h
+-- Installing: /usr/local/include/gtest/internal/gtest-internal.h
+-- Installing: /usr/local/include/gtest/internal/gtest-port-arch.h
+-- Installing: /usr/local/include/gtest/gtest-death-test.h
+-- Installing: /usr/local/include/gtest/gtest.h
+-- Installing: /usr/local/lib/libgtest.a
+-- Installing: /usr/local/lib/libgtest_main.a
+-- Installing: /usr/local/lib/pkgconfig/gtest.pc
+-- Installing: /usr/local/lib/pkgconfig/gtest_main.pc
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ nano CMakeLists.txt
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ cmake --build _builds
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Found GTest: /usr/local/lib/cmake/GTest/GTestConfig.cmake (found version "1.15.0")
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/noobik999/Noobik999/workspace/projects/lab07/_builds
+[ 50%] Built target print
+[ 75%] Building CXX object CMakeFiles/check.dir/tests/test1.cpp.o
+[100%] Linking CXX executable check
+[100%] Built target check
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ cmake --build _build --target test
+Error: /home/noobik999/Noobik999/workspace/projects/lab07/_build is not a directory
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ cmake --build _builds --target test
+Running tests...
+Test project /home/noobik999/Noobik999/workspace/projects/lab07/_builds
+    Start 1: check
+1/1 Test #1: check ............................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.00 sec
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ ls -la $HOME/.hunter
+итого 12
+drwxrwxr-x  3 noobik999 noobik999 4096 мая  8 16:33 .
+drwx------ 19 noobik999 noobik999 4096 мая  8 18:23 ..
+drwxrwxr-x  5 noobik999 noobik999 4096 мая  8 16:33 _Base
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ git clone https://github.com/cpp-pm/hunter $HOME/projects/hunter
+Клонирование в «/home/noobik999/projects/hunter»...
+remote: Enumerating objects: 55944, done.
+remote: Counting objects: 100% (280/280), done.
+remote: Compressing objects: 100% (80/80), done.
+remote: Total 55944 (delta 225), reused 205 (delta 195), pack-reused 55664 (from 3)
+Получение объектов: 100% (55944/55944), 14.48 МиБ | 622.00 КиБ/с, готово.
+Определение изменений: 100% (35040/35040), готово.
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ export HUNTER_ROOT=$HOME/projects/hunter
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ rm -rf _builds
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ cmake -H. -B_builds -DBUILD_TESTS=ON
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found GTest: /usr/local/lib/cmake/GTest/GTestConfig.cmake (found version "1.15.0")
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/noobik999/Noobik999/workspace/projects/lab07/_builds
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ cmake --build _builds
+[ 25%] Building CXX object CMakeFiles/print.dir/sources/print.cpp.o
+[ 50%] Linking CXX static library libprint.a
+[ 50%] Built target print
+[ 75%] Building CXX object CMakeFiles/check.dir/tests/test1.cpp.o
+[100%] Linking CXX executable check
+[100%] Built target check
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ cmake --build _builds --target test
+Running tests...
+Test project /home/noobik999/Noobik999/workspace/projects/lab07/_builds
+    Start 1: check
+1/1 Test #1: check ............................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.00 sec
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ cat $HUNTER_ROOT/cmake/configs/default.cmake | grep GTest
+  hunter_default_version(GTest VERSION 1.7.0-hunter-6)
+  hunter_default_version(GTest VERSION 1.15.2)
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ cat $HUNTER_ROOT/cmake/projects/GTest/hunter.cmake
+# Copyright (c) 2013, Ruslan Baratov
+# All rights reserved.
+
+# !!! DO NOT PLACE HEADER GUARDS HERE !!!
+
+include(hunter_add_version)
+include(hunter_cacheable)
+include(hunter_download)
+include(hunter_pick_scheme)
+include(hunter_cmake_args)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.7.0-hunter"
+    URL
+    "https://github.com/hunter-packages/gtest/archive/v1.7.0-hunter.tar.gz"
+    SHA1
+    1ed1c26d11fb592056c1cb912bd3c784afa96eaa
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.7.0-hunter-1"
+    URL
+    "https://github.com/hunter-packages/gtest/archive/v1.7.0-hunter-1.tar.gz"
+    SHA1
+    0cb1dcf75e144ad052d3f1e4923a7773bf9b494f
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.7.0-hunter-2"
+    URL
+    "https://github.com/hunter-packages/gtest/archive/v1.7.0-hunter-2.tar.gz"
+    SHA1
+    e62b2ef70308f63c32c560f7b6e252442eed4d57
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.7.0-hunter-3"
+    URL
+    "https://github.com/hunter-packages/gtest/archive/v1.7.0-hunter-3.tar.gz"
+    SHA1
+    fea7d3020e20f059255484c69755753ccadf6362
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.7.0-hunter-4"
+    URL
+    "https://github.com/hunter-packages/gtest/archive/v1.7.0-hunter-4.tar.gz"
+    SHA1
+    9b439c0c25437a083957b197ac6905662a5d901b
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.7.0-hunter-5"
+    URL
+    "https://github.com/hunter-packages/gtest/archive/v1.7.0-hunter-5.tar.gz"
+    SHA1
+    796804df3facb074087a4d8ba6f652e5ac69ad7f
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.7.0-hunter-6"
+    URL
+    "https://github.com/hunter-packages/gtest/archive/v1.7.0-hunter-6.tar.gz"
+    SHA1
+    64b93147abe287da8fe4e18cfd54ba9297dafb82
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.7.0-hunter-7"
+    URL
+    "https://github.com/hunter-packages/gtest/archive/v1.7.0-hunter-7.tar.gz"
+    SHA1
+    19b5c98747768bcd0622714f2ed40f17aee406b2
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.7.0-hunter-8"
+    URL
+    "https://github.com/hunter-packages/gtest/archive/v1.7.0-hunter-8.tar.gz"
+    SHA1
+    ac4d2215aa1b1d745a096e5e3b2dbe0c0f229ea5
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.7.0-hunter-9"
+    URL
+    "https://github.com/hunter-packages/gtest/archive/v1.7.0-hunter-9.tar.gz"
+    SHA1
+    8a47fe9c4e550f4ed0e2c05388dd291a059223d9
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.7.0-hunter-10"
+    URL
+    "https://github.com/hunter-packages/gtest/archive/v1.7.0-hunter-10.tar.gz"
+    SHA1
+    374e6dbe8619ab467c6b1a0b470a598407b172e9
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.7.0-hunter-11"
+    URL
+    "https://github.com/hunter-packages/gtest/archive/v1.7.0-hunter-11.tar.gz"
+    SHA1
+    c6ae948ca2bea1d734af01b1069491b00933ed31
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    1.8.0-hunter-p2
+    URL
+    "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p2.tar.gz"
+    SHA1
+    93148cb8850abe78b76ed87158fdb6b9c48e38c4
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    1.8.0-hunter-p5
+    URL https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p5.tar.gz
+    SHA1 3325aa4fc8b30e665c9f73a60f19387b7db36f85
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    1.8.0-hunter-p6
+    URL
+    "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p6.tar.gz"
+    SHA1
+    f57096bd01c6f8cbef043b312d4d1e82f29648b6
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    1.8.0-hunter-p7
+    URL
+    "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p7.tar.gz"
+    SHA1
+    4fe083a96d7597f7dce6f453dca01e1d94a1e45b
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    1.8.0-hunter-p8
+    URL
+    "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p8.tar.gz"
+    SHA1
+    1cdd396b20c8d29f7ea08baaa49673b1c261f545
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    1.8.0-hunter-p9
+    URL
+    "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p9.tar.gz"
+    SHA1
+    a345f16cb610e0b5dfa7778dc2852b784cfede5b
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    1.8.0-hunter-p10
+    URL
+    "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p10.tar.gz"
+    SHA1
+    1d92c9f51af756410843b13f8c4e4df09e235394
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.8.0-hunter-p11"
+    URL
+    "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p11.tar.gz"
+    SHA1
+    76c6aec038f7d7258bf5c4f45c4817b34039d285
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.8.1"
+    URL
+    "https://github.com/google/googletest/archive/release-1.8.1.tar.gz"
+    SHA1
+    152b849610d91a9dfa1401293f43230c2e0c33f8
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.10.0"
+    URL
+    "https://github.com/google/googletest/archive/release-1.10.0.tar.gz"
+    SHA1
+    9c89be7df9c5e8cb0bc20b3c4b39bf7e82686770
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.10.0-p0"
+    URL
+    "https://github.com/hunter-packages/googletest/archive/v1.10.0-p0.tar.gz"
+    SHA1
+    f7c72be12120e018f53cda0e0daa26fab5da7dfc
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.10.0-p1"
+    URL
+    "https://github.com/hunter-packages/googletest/archive/v1.10.0-p1.tar.gz"
+    SHA1
+    06a1f667f200ff94d38b608e44c3c8061c7b8f2f
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.11.0"
+    URL
+    "https://github.com/google/googletest/archive/release-1.11.0.tar.gz"
+    SHA1
+    7b100bb68db8df1060e178c495f3cbe941c9b058
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.12.1"
+    URL
+    "https://github.com/google/googletest/archive/release-1.12.1.tar.gz"
+    SHA1
+    cdddd449d4e3aa7bd421d4519c17139ea1890fe7
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.13.0"
+    URL
+    "https://github.com/google/googletest/archive/v1.13.0.tar.gz"
+    SHA1
+    bfa4b5131b6eaac06962c251742c96aab3f7aa78
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.14.0"
+    URL
+    "https://github.com/google/googletest/archive/v1.14.0.tar.gz"
+    SHA1
+    2b28c2a3a30d86b1759543ef61fac3c4d69f8c4c
+)
+
+hunter_add_version(
+        PACKAGE_NAME
+        GTest
+        VERSION
+        "1.15.2"
+        URL
+        "https://github.com/google/googletest/archive/v1.15.2.tar.gz"
+        SHA1
+        568d58e26bd4e838449ca7ab8ebc152b3cbd210d
+)
+
+
+if(HUNTER_GTest_VERSION VERSION_LESS 1.8.0 OR HUNTER_GTest_VERSION VERSION_GREATER_EQUAL 1.11.0)
+  set(_gtest_license "LICENSE")
+else()
+  set(_gtest_license "googletest/LICENSE")
+endif()
+
+# gtest_force_shared_crt prevents GoogleTest from modifying options
+# rather than forcing it to use shared libraries
+hunter_cmake_args(
+    GTest
+    CMAKE_ARGS
+    HUNTER_INSTALL_LICENSE_FILES=${_gtest_license}
+    gtest_force_shared_crt=TRUE
+)
+
+hunter_pick_scheme(DEFAULT url_sha1_cmake)
+hunter_cacheable(GTest)
+hunter_download(PACKAGE_NAME GTest PACKAGE_INTERNAL_DEPS_ID 1)
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ mkdir cmake/Hunter
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ cat > cmake/Hunter/config.cmake <<EOF
+> hunter_config(GTest VERSION 1.7.0-hunter-9)
+> EOF
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ mkdir demo
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ cat > demo/main.cpp <<EOF
+> #include <print.hpp>
+> 
+> #include <cstdlib>
+> 
+> int main(int argc, char* argv[])
+> {
+>   const char* log_path = std::getenv("LOG_PATH");
+>   if (log_path == nullptr)
+>   {
+>     std::cerr << "undefined environment variable: LOG_PATH" << std::endl;
+>     return 1;
+>   }
+>   std::string text;
+>   while (std::cin >>text)
+>   {
+>      std::ofstream out{log_path, std::ios_base::app};
+>      print(text, out);
+>      out << std::endl;
+>   }
+> }
+> EOF
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ nano demo/main.cpp
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ gsed -i '/endif()/a\ add_executable(demo ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp) target_link_libraries(demo print) install(TARGETS demo RUNTIME DESTINATION bin)' CMakeLists.txt
+```
+
+## Загрузка Polly и работа с ним
+P.S. Вместо Clang было решено использовать GCC
+```
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ git submodule add https://github.com/ruslo/polly tools/polly
+(Этот кусок код был утерян)
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ mkdir tools
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ tools/polly/bin/polly.py --install --clear
+Python version: 3.13
+Build dir: /home/noobik999/Noobik999/workspace/projects/lab07/_builds/default
+Remove directory: /home/noobik999/Noobik999/workspace/projects/lab07/_builds/default
+Execute command: [
+  `which`
+  `cmake`
+]
+
+[/home/noobik999/Noobik999/workspace/projects/lab07]> "which" "cmake"
+
+/usr/bin/cmake
+Execute command: [
+  `cmake`
+  `--version`
+]
+
+[/home/noobik999/Noobik999/workspace/projects/lab07]> "cmake" "--version"
+
+cmake version 3.31.6
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+Execute command: [
+  `cmake`
+  `-H.`
+  `-B/home/noobik999/Noobik999/workspace/projects/lab07/_builds/default`
+  `-DCMAKE_TOOLCHAIN_FILE=/home/noobik999/Noobik999/workspace/projects/lab07/tools/polly/default.cmake`
+  `-DCMAKE_INSTALL_PREFIX=/home/noobik999/Noobik999/workspace/projects/lab07/_install/default`
+]
+
+[/home/noobik999/Noobik999/workspace/projects/lab07]> "cmake" "-H." "-B/home/noobik999/Noobik999/workspace/projects/lab07/_builds/default" "-DCMAKE_TOOLCHAIN_FILE=/home/noobik999/Noobik999/workspace/projects/lab07/tools/polly/default.cmake" "-DCMAKE_INSTALL_PREFIX=/home/noobik999/Noobik999/workspace/projects/lab07/_install/default"
+
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- [polly] Used toolchain: Default
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/noobik999/Noobik999/workspace/projects/lab07/_builds/default
+Execute command: [
+  `cmake`
+  `--build`
+  `/home/noobik999/Noobik999/workspace/projects/lab07/_builds/default`
+  `--target`
+  `install`
+  `--`
+]
+
+[/home/noobik999/Noobik999/workspace/projects/lab07]> "cmake" "--build" "/home/noobik999/Noobik999/workspace/projects/lab07/_builds/default" "--target" "install" "--"
+
+[ 25%] Building CXX object CMakeFiles/print.dir/sources/print.cpp.o
+[ 50%] Linking CXX static library libprint.a
+[ 50%] Built target print
+[ 75%] Building CXX object CMakeFiles/demo.dir/demo/main.cpp.o
+[100%] Linking CXX executable demo
+[100%] Built target demo
+Install the project...
+-- Install configuration: ""
+-- Installing: /home/noobik999/Noobik999/workspace/projects/lab07/_install/default/lib/libprint.a
+-- Installing: /home/noobik999/Noobik999/workspace/projects/lab07/_install/default/include
+-- Installing: /home/noobik999/Noobik999/workspace/projects/lab07/_install/default/include/print.hpp
+-- Installing: /home/noobik999/Noobik999/workspace/projects/lab07/_install/default/cmake/print-config.cmake
+-- Installing: /home/noobik999/Noobik999/workspace/projects/lab07/_install/default/cmake/print-config-noconfig.cmake
+-- Installing: /home/noobik999/Noobik999/workspace/projects/lab07/_install/default/bin/demo
+-
+Log saved: /home/noobik999/Noobik999/workspace/projects/lab07/_logs/polly/default/log.txt
+-
+Generate: 0:00:01.165241s
+Build: 0:00:01.260355s
+-
+Total: 0:00:02.425967s
+-
+SUCCESS
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ tools/polly/bin/polly.py --toolchain gcc --test
+Python version: 3.13
+Build dir: /home/noobik999/Noobik999/workspace/projects/lab07/_builds/gcc
+Execute command: [
+  `which`
+  `cmake`
+]
+
+[/home/noobik999/Noobik999/workspace/projects/lab07]> "which" "cmake"
+
+/usr/bin/cmake
+Execute command: [
+  `cmake`
+  `--version`
+]
+
+[/home/noobik999/Noobik999/workspace/projects/lab07]> "cmake" "--version"
+
+cmake version 3.31.6
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+Execute command: [
+  `cmake`
+  `--build`
+  `/home/noobik999/Noobik999/workspace/projects/lab07/_builds/gcc`
+  `--`
+]
+
+[/home/noobik999/Noobik999/workspace/projects/lab07]> "cmake" "--build" "/home/noobik999/Noobik999/workspace/projects/lab07/_builds/gcc" "--"
+
+[ 50%] Built target print
+[100%] Built target demo
+Run tests
+Execute command: [
+  `ctest`
+]
+
+[/home/noobik999/Noobik999/workspace/projects/lab07/_builds/gcc]> "ctest"
+
+*********************************
+No test configuration file found!
+*********************************
+Usage
+
+  ctest [options]
+
+-
+Log saved: /home/noobik999/Noobik999/workspace/projects/lab07/_logs/polly/gcc/log.txt
+-
+Generate: 0:00:00.000079s
+Build: 0:00:01.041700s
+Test: 0:00:00.020932s
+-
+Total: 0:00:01.063006s
+-
+SUCCESS
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ tools/polly/bin/polly.py --toolchain gcc --install --clear
+Python version: 3.13
+Build dir: /home/noobik999/Noobik999/workspace/projects/lab07/_builds/gcc
+Remove directory: /home/noobik999/Noobik999/workspace/projects/lab07/_builds/gcc
+Execute command: [
+  `which`
+  `cmake`
+]
+
+[/home/noobik999/Noobik999/workspace/projects/lab07]> "which" "cmake"
+
+/usr/bin/cmake
+Execute command: [
+  `cmake`
+  `--version`
+]
+
+[/home/noobik999/Noobik999/workspace/projects/lab07]> "cmake" "--version"
+
+cmake version 3.31.6
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+Execute command: [
+  `cmake`
+  `-H.`
+  `-B/home/noobik999/Noobik999/workspace/projects/lab07/_builds/gcc`
+  `-GUnix Makefiles`
+  `-DCMAKE_TOOLCHAIN_FILE=/home/noobik999/Noobik999/workspace/projects/lab07/tools/polly/gcc.cmake`
+  `-DCMAKE_INSTALL_PREFIX=/home/noobik999/Noobik999/workspace/projects/lab07/_install/gcc`
+]
+
+[/home/noobik999/Noobik999/workspace/projects/lab07]> "cmake" "-H." "-B/home/noobik999/Noobik999/workspace/projects/lab07/_builds/gcc" "-GUnix Makefiles" "-DCMAKE_TOOLCHAIN_FILE=/home/noobik999/Noobik999/workspace/projects/lab07/tools/polly/gcc.cmake" "-DCMAKE_INSTALL_PREFIX=/home/noobik999/Noobik999/workspace/projects/lab07/_install/gcc"
+
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- [polly] Used toolchain: gcc / c++11 support
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/noobik999/Noobik999/workspace/projects/lab07/_builds/gcc
+Execute command: [
+  `cmake`
+  `--build`
+  `/home/noobik999/Noobik999/workspace/projects/lab07/_builds/gcc`
+  `--target`
+  `install`
+  `--`
+]
+
+[/home/noobik999/Noobik999/workspace/projects/lab07]> "cmake" "--build" "/home/noobik999/Noobik999/workspace/projects/lab07/_builds/gcc" "--target" "install" "--"
+
+[ 25%] Building CXX object CMakeFiles/print.dir/sources/print.cpp.o
+[ 50%] Linking CXX static library libprint.a
+[ 50%] Built target print
+[ 75%] Building CXX object CMakeFiles/demo.dir/demo/main.cpp.o
+[100%] Linking CXX executable demo
+[100%] Built target demo
+Install the project...
+-- Install configuration: ""
+-- Installing: /home/noobik999/Noobik999/workspace/projects/lab07/_install/gcc/lib/libprint.a
+-- Installing: /home/noobik999/Noobik999/workspace/projects/lab07/_install/gcc/include
+-- Installing: /home/noobik999/Noobik999/workspace/projects/lab07/_install/gcc/include/print.hpp
+-- Installing: /home/noobik999/Noobik999/workspace/projects/lab07/_install/gcc/cmake/print-config.cmake
+-- Installing: /home/noobik999/Noobik999/workspace/projects/lab07/_install/gcc/cmake/print-config-noconfig.cmake
+-- Installing: /home/noobik999/Noobik999/workspace/projects/lab07/_install/gcc/bin/demo
+-
+Log saved: /home/noobik999/Noobik999/workspace/projects/lab07/_logs/polly/gcc/log.txt
+-
+Generate: 0:00:01.172556s
+Build: 0:00:01.269270s
+-
+Total: 0:00:02.442223s
+-
+SUCCESS
+noobik999@debian:~/Noobik999/workspace/projects/lab07$ 
+```
