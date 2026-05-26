@@ -1,32 +1,58 @@
-﻿name: Build and Release
+﻿name: CI/CD Pipeline
 
 on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
     steps:
-    - uses: actions/checkout@v4  # Обновлено с v3 на v4
+    - name: Checkout code
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
-
+    
     - name: Install dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y cmake build-essential rpm
-
+    
+    - name: Configure CMake
+      run: |
+        mkdir -p _build
+        cd _build
+        cmake -DCMAKE_BUILD_TYPE=Release -DCPACK_GENERATOR="DEB;RPM;TGZ" ..
+    
     - name: Build and package
       run: |
-        mkdir _build && cd _build
-        cmake -DCPACK_GENERATOR="DEB;RPM;TGZ" ..
+        cd _build
         cmake --build . --target package
-
-    - name: Create Release and Upload Assets
-      uses: softprops/action-gh-release@v2  # Обновлено с v1 на v2
+    
+    - name: List packages
+      run: ls -la _build/
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
       with:
+        name: Release ${{ github.ref_name }}
+        body: |
+          ## Релиз ${{ github.ref_name }}
+          
+          ### Пакеты:
+          - DEB пакет для Debian/Ubuntu
+          - RPM пакет для Fedora/RHEL
+          - TGZ архив
+        draft: false
+        prerelease: false
         files: |
           _build/*.deb
           _build/*.rpm
