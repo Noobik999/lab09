@@ -1,32 +1,32 @@
-﻿# Это минимальный рабочий пример. Скопируйте его в .github/workflows/ci.yml
-name: Build and Release
+﻿name: Build and Release
 
 on:
   push:
     tags:
-      - 'v*'  # Срабатывает на любой тег, начинающийся с 'v'
+      - 'v*'
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4  # Обновлено с v3 на v4
+      with:
+        fetch-depth: 0
 
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y cmake build-essential rpm
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake build-essential rpm
 
     - name: Build and package
       run: |
         mkdir _build && cd _build
-        # Указываем генераторы: DEB, RPM и TGZ
         cmake -DCPACK_GENERATOR="DEB;RPM;TGZ" ..
         cmake --build . --target package
-        ls -la  # Проверяем, какие файлы создались
 
     - name: Create Release and Upload Assets
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2  # Обновлено с v1 на v2
       with:
-        # Загружаем ВСЕ пакеты из папки _build
         files: |
           _build/*.deb
           _build/*.rpm
