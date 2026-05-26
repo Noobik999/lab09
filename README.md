@@ -1,1 +1,1 @@
-[![Build Status](https://app.travis-ci.com/Noobik999/lab06.svg?token=DW99RGd3zDvCin7NRRmu)](https://app.travis-ci.com/Noobik999/lab06)
+﻿[![CI/CD Pipeline](https://github.com/Noobik999/lab09/actions/workflows/ci.yml/badge.svg)](https://github.com/Noobik999/lab09/actions/workflows/ci.yml)
